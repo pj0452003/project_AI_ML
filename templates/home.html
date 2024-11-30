@@ -4,6 +4,55 @@
   <meta charset="UTF-8">
   <title>ML API</title>
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    .login h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .login input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .login button {
+      width: 50%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -31,5 +80,25 @@
  </div>
  {{result}}
 
+ <script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    let isValid = true;
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.style.borderColor = 'red';
+      } else {
+        input.style.borderColor = '#ddd';
+      }
+    });
+
+    if (!isValid) {
+      alert("Please fill out all fields.");
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+</script>
 </body>
 </html>
